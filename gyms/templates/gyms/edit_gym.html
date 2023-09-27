@@ -1,0 +1,33 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Edit The Gym</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<section class="m-5">
+    <div class="addItem--form">
+        <h3>Edit Your Gym Info!</h3>
+
+        {% if edit_form.errors %}
+        
+        <p>Por favor, revisar los datos ingresados.</p>
+        
+        {% endif %}
+
+        <form action="" method="POST">{% csrf_token %}
+            <table class="d-flex flex-column mt-4">
+                {{ edit_form.as_table }}
+            </table>
+            <div class="d-grid gap-2 col-12 mx-auto mt-4">
+                <button class="btn btn-block btn-success" type="submit">Update!</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

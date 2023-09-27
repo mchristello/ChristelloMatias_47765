@@ -1,0 +1,31 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Catch a New Pokemon</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<section class="addItem--form m-5">
+    <h3>Add A New Pokemon</h3>
+
+    {% if form.errors %}
+    
+    <p>Por favor, revisar los datos ingresados.</p>
+    
+    {% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div class="d-grid gap-2 col-12 mx-auto mt-4">
+            <button class="btn btn-block btn-success" type="submit">Catch!</button>
+        </div>
+    </form>
+</section>
+
+{% endblock %}

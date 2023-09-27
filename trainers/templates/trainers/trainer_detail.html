@@ -1,0 +1,42 @@
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Trainer Detail!</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<section class="d-flex flex-column align-items-center">
+    {% if object %}
+
+    <table class="table table-blur w-50">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <!-- <th class="text-center">Image</th> -->
+                <th class="text-center">Name</th>
+                <th class="text-center">Lastname</th>
+                <th class="text-center">Favorite Type</th>
+                <th class="text-center">Owned Pokemons</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+            <tr>
+                <td class="m-2 text-center">{{ object.id }} </td>
+                <!-- <td class="m-2 text-center"><img src="{{ object.image }}" alt="pokemon image"></td> -->
+                <td class="text-center">{{object.name}}</td>
+                <td class="text-center">{{object.lastname}}</td>
+                <td class="text-center">{{object.favorite_type}}</td>
+                <td class="text-center">{{object.owned_pokemons}}</td>
+            </tr>
+    </table>
+
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'PokemonList' %}">Go Back To List!</a>
+</section>
+
+{% endblock %}

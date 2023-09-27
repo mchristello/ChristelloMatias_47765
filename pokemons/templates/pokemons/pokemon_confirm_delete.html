@@ -1,0 +1,21 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Delete Pokemon</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<section class="delete_pokemon">
+    <form action="" method="POST">{% csrf_token %}
+        <h5 class="text-center">Estas seguro de borrar a {{ object.name }}??</h5>
+        <div class="d-grid gap-2 col-2 mx-auto mt-4">
+            <button class="btn btn-block btn-danger" type="submit">Confirm!</button>
+        </div>
+    </form>
+</section>
+
+{% endblock %}

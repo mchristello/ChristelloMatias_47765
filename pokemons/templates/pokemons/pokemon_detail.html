@@ -1,0 +1,46 @@
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Pokemon Detail!</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<section class="d-flex flex-column align-items-center">
+    {% if object %}
+
+    <table class="table table-blur w-50">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <!-- <th class="text-center">Image</th> -->
+                <th class="text-center">Pokemon Name</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Attack Power</th>
+                <th class="text-center">Defense</th>
+                <th class="text-center">Health</th>
+                <th class="text-center">Catched At</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+            <tr>
+                <td class="m-2 text-center">{{ object.id }} </td>
+                <!-- <td class="m-2 text-center"><img src="{{ object.image }}" alt="pokemon image"></td> -->
+                <td class="text-center">{{object.name}}</td>
+                <td class="text-center">{{object.type}}</td>
+                <td class="text-center">{{object.attack}}</td>
+                <td class="text-center">{{object.defense}}</td>
+                <td class="text-center">{{object.health}}</td>
+                <td class="m-2 text-center">{{ object.catched_at }}</td>
+            </tr>
+    </table>
+
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'PokemonList' %}">Go Back To List!</a>
+</section>
+
+{% endblock %}

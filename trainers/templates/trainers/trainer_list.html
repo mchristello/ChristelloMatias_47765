@@ -1,0 +1,41 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Tainers List</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<div class="form__container d-flex justify-content-evenly">
+    <div class="d-flex flex-column align-items-center justify-content-center m-1 w-50">
+        <h2 class="text-center">Every Trainer in the DB</h2>
+        <table class="table table-blur">
+            <thead>
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Lastname</th>
+                    <th class="text-center">Detail</th>
+                    <th class="text-center">Edit</th>
+                    <th class="text-center">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trainer in object_list %}
+                    <tr>
+                        <td class="m-2 text-center">{{ trainer.name }}</td>
+                        <td class="m-2 text-center">{{ trainer.lastname }}</td>
+                        <td class="m-2 text-center"><a class="btn btn-outline-info" href="{% url 'TrainerDetail' trainer.id %}">✅</a></td>
+                        <td class="m-2 text-center"><a class="btn btn-outline-success" href="{% url 'TrainerUpdate' trainer.id %}">✏️</a></td>
+                        <td class="m-2 text-center"><a class="btn btn-outline-danger" href="{% url 'TrainerDelete' trainer.id %}">❌</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-info"><a href="{% url 'TrainerCreate' %}">Create a New Trainer</a></button>
+    </div>
+</div>
+
+{% endblock %}
