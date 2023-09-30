@@ -10,4 +10,13 @@
 
 {% block contenidoQueCambia %}
 
+
+
+{% if request.user.is_authenticated %}
+    <section class="home text-center">
+        <h2 class="title--welcome m-auto"><b><u>{{user}}</u></b>, nice to see you here!</h2>
+        <p class="title--welcome m-5">We have all your pokemons ready for you, just go for them!</p>
+    </section>
+{% endif %}
+
 {% endblock %}

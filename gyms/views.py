@@ -29,12 +29,16 @@ class GymDetail(DetailView):
     
 class GymCreate(CreateView):
     model = Gym
-    fields = ['name', 'type', 'master']
+    form_class = (
+        GymForm
+    )
     success_url = '/gymsList'
     
 class GymUpdate(UpdateView):
     model = Gym
-    fields = ['name', 'type', 'master']
+    form_class = (
+        GymForm
+    )
     success_url = '/gymsList'
     
 class GymDelete(DeleteView):

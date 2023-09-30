@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+from .forms import *
 # VISTA BASADA EN CLASES
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -7,6 +8,17 @@ from django.views.generic.detail import DetailView
 from .models import Pokemon
 
 # Create your views here.
+# Vista de Busquedas
+def pokemon_search_result(request):
+    if request.GET['pokemon']:
+        name = request.GET['pokemon']
+        pokemon = Pokemon.objects.filter(name__icontains=name)
+        return render(request, 'pokemons/search_pokemon.html', { 'name': name, 'pokemon': pokemon})
+    else:
+        advice = f'No se enviaron datos!'
+        
+    return HttpResponse(advice)
+
 # Vista basada en CLASES
 # Read
 class PokemonList(ListView): # pokemon_form.html
@@ -16,13 +28,17 @@ class PokemonList(ListView): # pokemon_form.html
 # Create 
 class PokemonCreate(CreateView): # Usan el mismo HTML pokemon_form.html
     model = Pokemon
-    fields = ['name', 'type', 'attack', 'defense', 'health', 'image']
+    form_class = (
+        PokemonForm
+    )
     success_url = '/pokemonList'
     
 # Update
 class PokemonUpdate(UpdateView): # Usan el mismo HTML pokemon_form.html
     model = Pokemon
-    fields = ['name', 'type', 'attack', 'defense', 'health', 'image']
+    form_class = (
+        PokemonForm
+    )
     success_url = '/pokemonList'
     
 # Delete 

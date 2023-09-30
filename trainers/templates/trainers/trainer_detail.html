@@ -31,7 +31,11 @@
                 <td class="text-center">{{object.name}}</td>
                 <td class="text-center">{{object.lastname}}</td>
                 <td class="text-center">{{object.favorite_type}}</td>
-                <td class="text-center">{{object.owned_pokemons}}</td>
+                <td class="text-center">
+                    {% for pokemon in object.owned_pokemons.all %}
+                        <p>{{pokemon}}</p>
+                    {% endfor %}
+                </td>
             </tr>
     </table>
 

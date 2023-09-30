@@ -18,9 +18,9 @@
     
     {% endif %}
 
-    <form action="" method="POST">{% csrf_token %}
+    <form action="" method="POST" class="table-blur p-5 form--style">{% csrf_token %}
         <table>
-            {{ form.as_table }}
+            {{ form.as_table}}
         </table>
         <div class="d-grid gap-2 col-12 mx-auto mt-4">
             <button class="btn btn-block btn-success" type="submit">Catch!</button>

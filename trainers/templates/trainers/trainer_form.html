@@ -9,7 +9,7 @@
 
 {% block contenidoQueCambia %}
 
-<section class="addItem--form m-5">
+<section class="addItem--form m-5 form__container">
     <h3>New Trainer</h3>
 
     {% if form.errors %}
@@ -18,12 +18,12 @@
     
     {% endif %}
 
-    <form action="" method="POST">{% csrf_token %}
+    <form action="" method="POST" class="table-blur p-5 form--style">{% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
         <div class="d-grid gap-2 col-12 mx-auto mt-4">
-            <button class="btn btn-block btn-success" type="submit">Submit!</button>
+            <button class="btn btn-block btn-success" type="submit">Save!</button>
         </div>
     </form>
 </section>

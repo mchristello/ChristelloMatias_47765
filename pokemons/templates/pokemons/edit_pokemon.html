@@ -19,7 +19,7 @@
         
         {% endif %}
 
-        <form action="" method="POST">{% csrf_token %}
+        <form action="" method="POST" class="form--style">{% csrf_token %}
             <table class="d-flex flex-column mt-4">
                 {{ edit_form.as_table }}
             </table>

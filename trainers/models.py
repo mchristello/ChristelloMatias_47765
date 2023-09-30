@@ -1,5 +1,5 @@
 from django.db import models
-from pokemons.models import Pokemon
+from pokemons.models import *
 
 
 

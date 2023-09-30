@@ -1,0 +1,24 @@
+
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <!-- <h1 class="text-center header-title">Welcome to Pokeworld! {{ user.name }}</h1> -->
+    <h1 class="text-center header-title">Edit Profile</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+<section class="addItem--form m-5">
+
+    <form action="" method="POST" class="table-blur p-5 d-flex flex-column form--style">
+        <h2 class="title--welcome text-center mb-4">Edit Profile</h2>
+        {% csrf_token %}
+    
+            {{ user_form.as_p }}
+            <button class="btn btn-info w-100 mt-5" type="submit">Update Info</button>
+    </form>
+
+</section>
+
+{% endblock %}

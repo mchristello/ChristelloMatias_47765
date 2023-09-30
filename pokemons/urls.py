@@ -3,6 +3,7 @@ from pokemons import views
 
 urlpatterns = [
     
+    path('result', views.pokemon_search_result, name='PokemonSearch'),
     # Vista Basada en CLASS 
     path('pokemonList/', views.PokemonList.as_view() , name='PokemonList'),
     path('pokemonCreate/', views.PokemonCreate.as_view() , name='PokemonCreate'),

@@ -1,0 +1,58 @@
+
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Trainers & Masters Content</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<div class="form__container justify-content-evenly">
+    <ul class="d-flex flex-column align-items-center m-5">
+        <h2 class="text-center">Acá se ven todos los Maestros Pokemons!</h2>
+            <table class="table table-blur w-50">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Master Name</th>
+                        <th class="text-center">Lastname</th>
+                        <th class="text-center">Favorite Pokemon Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for master in all_masters %}
+                        <tr>
+                            <td class="mx-5 text-center">{{ master.id }}</td>
+                            <td class="mx-5 text-center">{{ master.name }}</td>
+                            <td class="mx-5 text-center">{{ master.lastname }}</td>
+                            <td class="mx-5 text-center">{{ master.favorite_type }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </ul>
+    
+    <section class="addItem--form m-5">
+        <h3>Add New Master or Trainer</h3>
+    
+        {% if trainerform.errors %}
+    
+        <p>Please, check the info</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST">{% csrf_token %}
+    
+            <table>
+                {{ trainerform.as_table }}
+            </table>
+            <div class="d-grid gap-2 col-12 mx-auto mt-4">
+                <button class="btn btn-inline-block btn-success" type="submit">Create</button>
+            </div>
+        </form>
+    </section>   
+</div>
+
+{% endblock %}

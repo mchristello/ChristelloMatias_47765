@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import *
+from django.contrib.auth.decorators import login_required
 from .models import Trainer
 # Class Based Views imports
 from django.views.generic import ListView
@@ -20,7 +21,7 @@ def views_trainer(request):
             return render(request, 'trainers/trainer.html', {'all_trainers': all_trainers, 'trainerform': trainerform})
     else:
         trainerform = TrainerForm()
-    return render(request, 'trainers/trainer_list.html', {'all_trainers': all_trainers, 'trainerform': trainerform})
+    return render(request, 'trainers/master.html', {'all_trainers': all_trainers, 'trainerform': trainerform})
 
 # Class Based Views
 class TrainerList(ListView):
@@ -28,15 +29,19 @@ class TrainerList(ListView):
     
 class TrainerDetail(DetailView):
     model = Trainer
-    
+        
 class TrainerCreate(CreateView):
     model = Trainer
-    fields = ['name', 'lastname', 'favorite_type', 'owned_pokemons']
+    form_class = (
+        TrainerForm
+    )
     success_url = '/trainers/trainerList'
     
 class TrainerUpdate(UpdateView):
     model = Trainer
-    fields = ['name', 'lastname', 'favorite_type', 'owned_pokemons']
+    form_class = (
+        TrainerForm
+    )
     success_url = '/trainers/trainerList'
     
 class TrainerDelete(DeleteView):

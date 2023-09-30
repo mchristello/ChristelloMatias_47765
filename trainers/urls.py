@@ -3,7 +3,7 @@ from trainers import views
 
 urlpatterns = [
     
-    path('', views.views_trainer, name='Trainer'),
+    path('master/', views.views_trainer, name='Trainer'),
     
     # Vista Basada en CLASS 
     path('trainerList/', views.TrainerList.as_view() , name='TrainerList'),
