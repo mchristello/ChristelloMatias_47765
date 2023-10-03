@@ -9,16 +9,17 @@
 
 {% block contenidoQueCambia %}
 
-<section class="addItem--form m-5">
-    <h3>New Gym</h3>
-
+<section class="addItem--form m-5 form__container">
     {% if form.errors %}
     
     <p>Por favor, revisar los datos ingresados.</p>
     
     {% endif %}
 
-    <form action="" method="POST" class="table-blur p-5">{% csrf_token %}
+    <form action="" method="POST" class="table-blur p-5 form--style">
+        {% csrf_token %}
+        <h3 class="title--welcome text-center mb-2">New Gym</h3>
+
         <table>
             {{ form.as_table }}
         </table>

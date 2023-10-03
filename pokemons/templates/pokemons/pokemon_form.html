@@ -9,8 +9,7 @@
 
 {% block contenidoQueCambia %}
 
-<section class="addItem--form m-5">
-    <h3>Add A New Pokemon</h3>
+<section class="addItem--form m-5 form__container">
 
     {% if form.errors %}
     
@@ -18,7 +17,10 @@
     
     {% endif %}
 
-    <form action="" method="POST" class="table-blur p-5 form--style">{% csrf_token %}
+    <form action="" method="POST" enctype="multipart/form-data" class="table-blur p-5 form--style">
+        {% csrf_token %}
+        <h2 class="title--welcome text-center mb-5">Add A New Pokemon</h2>
+
         <table>
             {{ form.as_table}}
         </table>

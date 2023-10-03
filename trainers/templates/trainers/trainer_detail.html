@@ -32,15 +32,19 @@
                 <td class="text-center">{{object.lastname}}</td>
                 <td class="text-center">{{object.favorite_type}}</td>
                 <td class="text-center">
-                    {% for pokemon in object.owned_pokemons.all %}
-                        <p>{{pokemon}}</p>
-                    {% endfor %}
+                    {% if not object.owned_pokemons.all %}
+                        <p>Have no pokemons yet.</p>
+                    {% else %}
+                        {% for pokemon in object.owned_pokemons.all %}
+                            <p>{{pokemon}}</p>
+                        {% endfor %}
+                    {% endif %}
                 </td>
             </tr>
     </table>
 
     {% endif %}
-    <a class="btn btn-primary" href="{% url 'PokemonList' %}">Go Back To List!</a>
+    <a class="btn btn-primary" href="{% url 'TrainerList' %}">Go Back To List!</a>
 </section>
 
 {% endblock %}

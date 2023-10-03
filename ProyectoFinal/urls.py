@@ -23,10 +23,12 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='Home'),
+    path('result/', page_search, name='SearchResult'),
     path('pokemons/', include('pokemons.urls')),
     path('trainers/', include('trainers.urls')),
     path('gyms/', include('gyms.urls')),
     path('users/', include('users.urls')),
 ]
 
-urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATICFILES_DIRS)

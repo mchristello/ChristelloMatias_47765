@@ -6,11 +6,6 @@ from django.contrib.auth.decorators import login_required # Mixin para protectio
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-# class MyView(LoginRequiredMixin, View):
-#     login_url = "/login/"
-#     redirect_field_name = "redirect_to"
-
-# Create your views here.
 # Vista de Login 
 def login_view(request):
     if request.method == 'POST':
@@ -50,7 +45,6 @@ def register(request):
 def editProfile(request):
 
     user = request.user
-
     if request.method == 'POST':
 
         user_form = UserEditForm(request.POST)
@@ -67,14 +61,13 @@ def editProfile(request):
 
             user.save()
 
-            return render(request, "users/inicio.html")
+            return render(request, "home.html")
 
     else:
 
         user_form = UserEditForm(initial={'email': user.email})
 
     return render(request, "users/edit_profile.html", {"user_form": user_form, "user": user})
-
 
 @login_required
 def addAvatar(request):
@@ -83,13 +76,15 @@ def addAvatar(request):
         
         if avatar_form.is_valid():
             
-            usuario = request.user
+            user = request.user
             imagen = avatar_form.cleaned_data['imagen']
-            avatar = Avatar(user=usuario, imagen=imagen)
+            avatar = Avatar(user=user, imagen=imagen)
             avatar.save()
             
-            return render(request, "inicio.html")  
+            return render(request, "home.html")  
+        
     else:
+        user = request.user
         avatar_form = AvatarFormulario()
     
-    return render(request, "users/add_avatar.html", {"avatar_form": avatar_form})
+    return render(request, "users/add_avatar.html", {"avatar_form": avatar_form, 'User': user})

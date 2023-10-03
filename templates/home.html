@@ -6,17 +6,23 @@
 {% block title %}
     <!-- <h1 class="text-center header-title">Welcome to Pokeworld! {{ user.name }}</h1> -->
     <h1 class="text-center header-title">Welcome to Pokeworld!</h1>
+
 {% endblock %}
 
 {% block contenidoQueCambia %}
-
-
 
 {% if request.user.is_authenticated %}
     <section class="home text-center">
         <h2 class="title--welcome m-auto"><b><u>{{user}}</u></b>, nice to see you here!</h2>
         <p class="title--welcome m-5">We have all your pokemons ready for you, just go for them!</p>
     </section>
+
+    {% else %}
+        <div class="d-flex flex-column align-items-center">
+            <a class="btn btn-success w-25 m-3" href="{% url 'Login' %}">Login</a>
+            <a class="btn btn-success w-25 m-3" href="{% url 'Register' %}">Register</a>
+        </div>
+
 {% endif %}
 
 {% endblock %}

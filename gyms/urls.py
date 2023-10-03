@@ -3,8 +3,6 @@ from gyms import views
 
 urlpatterns = [
     
-    path('', views.views_gyms, name='Gym'),
-    
     # Vista Basada en CLASS 
     path('gymList/', views.GymList.as_view() , name='GymList'),
     path('gymCreate/', views.GymCreate.as_view() , name='GymCreate'),

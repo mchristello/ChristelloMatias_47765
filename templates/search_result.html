@@ -1,0 +1,120 @@
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    <h1 class="text-center header-title">Search Result!</h1>
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<section class="d-flex flex-column align-items-center">
+    <h4 class="m-3">Estas buscando a: {{query}}</h4>
+
+    {% if element_type == 'pokemon' %}
+
+    <article class="mb-3 table-blur w-50">
+        {% for pokemon in result %}
+            <div class="row g-0 p-3">
+                <div class="col-md-4">
+                    {% if pokemon.image %}
+                        <img src="{{ pokemon.image.url }}" class="img-fluid rounded-start" alt="Pokemon Image">
+                    {% else %}
+                        <img src="../../../media/pokemones/pokeball.png" class="img-fluid rounded-start" alt="Pokeball Image">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column align-items-center">
+                            <h3 class="card-title mb-5"><b>{{ pokemon.name}}</b></h3>
+                            <p class="card-text"><u><b>Type:</b></u> {{pokemon.type}}</p>
+                            <p class="card-text"><u><b>Attack:</b></u> {{pokemon.attack}}</p>
+                            <p class="card-text"><u><b>Defense:</b></u> {{pokemon.defense}}</p>
+                            <p class="card-text"><u><b>Health:</b></u> {{pokemon.health}}</p>
+                            <p class="card-text"><small class="text-muted">Pokemon ID: {{ pokemon.id }}</small></p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center mt-5">
+                            {% if user.is_authenticated %}
+                                <button class="btn card_btn"><a class="btn btn-outline-success" href="{% url 'PokemonUpdate' pokemon.id %}">Edit Pokemon✏️</a></button>
+                                <button class="btn card_btn"><a class="btn btn-outline-danger" href="{% url 'PokemonDelete' pokemon.id %}">Delete Pokemon❌</a></button>
+                            {% endif %}
+                            <button class="btn card_btn"><a class="btn btn-outline-primary" href="{% url 'PokemonList' %}">Go Back To List!</a></button>
+                            
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+    </article>
+
+    {% elif element_type == 'trainer' %}
+
+    <article class="mb-3 table-blur w-50">
+        {% for trainer in result %}
+            <div class="row g-0 p-3">
+                <div class="col-md-4">
+                    {% if trainer.image %}
+                        <img src="{{ trainer.image.url }}" class="img-fluid rounded-start" alt="Pokemon Image">
+                    {% else %}
+                        <img src="../../../media/pokemones/pokeball.png" class="img-fluid rounded-start" alt="Pokeball Image">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h3 class="card-title mb-5"><b>{{ trainer.name }} {{ trainer.lastname }}</b></h3>
+                        <p class="card-text"><u><b>Favorite Type:</b></u> {{trainer.favorite_type}}</p>
+                        <div class="card-text"><u><b>Owned Pokemons:</b></u>
+                            {% for pokemon in trainer.owned_pokemons.all %}
+                                <p>{{pokemon}}</p>
+                            {% endfor %}
+                        </div>
+                        <p class="card-text"><small class="text-muted">Trainer ID: {{ trainer.id }}</small></p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mt-5">
+                        {% if user.is_authenticated %}
+                            <button class="btn card_btn"><a class="btn btn-outline-success" href="{% url 'TrainerUpdate' trainer.id %}">Edit Trainer✏️</a></button>
+                            <button class="btn card_btn"><a class="btn btn-outline-danger" href="{% url 'TrainerDelete' trainer.id %}">Delete Trainer❌</a></button>
+                        {% endif %}
+                        <button class="btn card_btn"><a class="btn btn-outline-primary" href="{% url 'TrainerList' %}">Go Back To List!</a></button>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </article>
+
+    {% elif element_type == 'gym' %}
+
+    <article class="mb-3 table-blur w-50">
+        {% for gym in result %}
+            <div class="row g-0 p-3">
+                <div class="col-md-4">
+                    {% if gym.image %}
+                        <img src="{{ trainer.image.url }}" class="img-fluid rounded-start" alt="Pokemon Image">
+                    {% else %}
+                        <img src="../../../media/pokemones/pokeball.png" class="img-fluid rounded-start" alt="Pokeball Image">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h3 class="card-title mb-5"><b>{{ gym.name }}</b></h3>
+                        <p class="card-text"><u><b>Gym Type:</b></u> {{gym.type}}</p>
+                        <p class="card-text"><b>Master:</b> {{ gym.master }}</p>
+                        <p class="card-text"><small class="text-muted">Gym ID: {{ gym.id }}</small></p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mt-5">
+                        {% if user.is_authenticated %}
+                            <button class="btn card_btn"><a class="btn btn-outline-success" href="{% url 'GymUpdate' gym.id %}">Edit Gym✏️</a></button>
+                            <button class="btn card_btn"><a class="btn btn-outline-danger" href="{% url 'GymDelete' gym.id %}">Delete Gym❌</a></button>
+                        {% endif %}
+                        <button class="btn card_btn"><a class="btn btn-outline-primary" href="{% url 'TrainerList' %}">Go Back To List!</a></button>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </article>
+
+    {% endif %}
+</section>
+
+{% endblock %}
+

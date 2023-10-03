@@ -18,8 +18,10 @@
                     <th class="text-center">Pokemon Name</th>
                     <th class="text-center">Type</th>
                     <th class="text-center">Detail</th>
-                    <th class="text-center">Edit</th>
-                    <th class="text-center">Delete</th>
+                    {% if user.is_authenticated %}
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Delete</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -28,8 +30,10 @@
                         <td class="m-2 text-center">{{ pokemon.name }}</td>
                         <td class="m-2 text-center">{{ pokemon.type }}</td>
                         <td class="m-2 text-center"><a class="btn btn-outline-info" href="{% url 'PokemonDetail' pokemon.id %}">✅</a></td>
-                        <td class="m-2 text-center"><a class="btn btn-outline-success" href="{% url 'PokemonUpdate' pokemon.id %}">✏️</a></td>
-                        <td class="m-2 text-center"><a class="btn btn-outline-danger" href="{% url 'PokemonDelete' pokemon.id %}">❌</a></td>
+                        {% if user.is_authenticated %}
+                            <td class="m-2 text-center"><a class="btn btn-outline-success" href="{% url 'PokemonUpdate' pokemon.id %}">✏️</a></td>
+                            <td class="m-2 text-center"><a class="btn btn-outline-danger" href="{% url 'PokemonDelete' pokemon.id %}">❌</a></td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

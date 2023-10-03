@@ -10,7 +10,7 @@
 
 {% block contenidoQueCambia %}
 <section class="addItem--form m-auto">
-    <form action="" method="POST" class="table-blur p-5 form--style">
+    <form action="" method="POST" enctype="multipart/form-data" class="table-blur p-5 form--style">
         {% csrf_token %}
     
             {{ avatar_form.as_p }}

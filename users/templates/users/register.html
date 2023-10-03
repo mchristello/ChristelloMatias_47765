@@ -9,12 +9,15 @@
 {% endblock %}
 
 {% block contenidoQueCambia %}
+<section class="addItem--form m-5 form__container">
+    <form action="" method="POST" class="table-blur p-5 form--style">
+        <h2 class="title--welcome text-center mb-5">Create Account</h2>
 
-<form action="" method="POST" class="form-style">
-    {% csrf_token %}
-
-        {{ form.as_p }}
-        <button class="btn btn-info w-100" type="submit">Create Account</button>
-</form>
+        {% csrf_token %}
+    
+            {{ form.as_p }}
+            <button class="btn btn-info w-100 mt-5" type="submit">Create Account</button>
+    </form>
+</section>
 
 {% endblock %}
