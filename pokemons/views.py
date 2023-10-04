@@ -11,7 +11,6 @@ from .models import Pokemon
 # Read
 class PokemonList(ListView): # pokemon_form.html
     model = Pokemon
-    # template_name = 'myApp/pokemon_list.html' - SE DETALLA EL NOMBRE DEL TEMPLATE A USAR SI NO ES POR DEFECTO
     
 # Create
 class PokemonCreate(LoginRequiredMixin, CreateView): # Usan el mismo HTML pokemon_form.html
@@ -20,6 +19,10 @@ class PokemonCreate(LoginRequiredMixin, CreateView): # Usan el mismo HTML pokemo
         PokemonForm
     )
     success_url = '/pokemons/pokemonList'
+    
+    def form_valid(self, form):
+        form.instance.owner = self.request.user  # Asigna el usuario actual como propietario
+        return super().form_valid(form)
     
 # Update
 class PokemonUpdate(LoginRequiredMixin, UpdateView): # Usan el mismo HTML pokemon_form.html

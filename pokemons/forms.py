@@ -8,6 +8,7 @@ class PokemonForm(forms.ModelForm):
     defense = forms.IntegerField(label='Defense', widget=forms.NumberInput(attrs={'class': 'form_input m-2'}))
     health = forms.IntegerField(label='Health', widget=forms.NumberInput(attrs={'class': 'form_input m-2'}))
     image = forms.ImageField(required=False)
+
     
     class Meta:
         model = Pokemon
