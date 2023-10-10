@@ -1,6 +1,5 @@
 from django.db import models
-from pokemons.models import *
-
+from pokemons.models import Pokemon
 
 
 # Create your models here.
@@ -11,4 +10,4 @@ class Trainer(models.Model):
     owned_pokemons = models.ManyToManyField(Pokemon, blank=True)
 
     def __str__(self) -> str:
-        return f"Name: {self.name} - Last Name: {self.lastname}"
+        return f"{self.name} {self.lastname}"

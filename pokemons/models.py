@@ -11,11 +11,11 @@ class Pokemon(models.Model):
     health = models.IntegerField(default=1)
     catched_at = models.DateTimeField(default=datetime.now())
     image = models.ImageField(upload_to='pokemones', null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pokemons', null=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pokemons', null=True)
     
 
     def __str__(self) -> str:
-        return f"Name: {self.name} || Catched At: {self.catched_at.strftime('%d-%m-%Y - %H:%M')}"
+        return f"{self.name} || Catched At: {self.catched_at.strftime('%d-%m-%Y - %H:%M')}"
     
     def owner_email(self):
-        return self.owner.email
+        return self.created_by.email

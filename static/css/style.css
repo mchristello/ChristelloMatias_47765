@@ -45,6 +45,7 @@
     color: rgb(5, 111, 138);
 }
 
+/* NAVBAR Styles */
 .navbar {
     background: linear-gradient(90deg, #ffffff 10%, #28c1f0 25%, #73f752 40%, #d6c845 55%, #f884f8 75%, #bd3131 85%, #2e1212 100%) !important;
     font-family: 'Baloo 2', cursive;
@@ -66,6 +67,16 @@ nav ul li:hover {
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
+.dropdown-menu {
+    background-color: #f0b59a !important;
+}
+
+.dropdown-menu a:hover {
+    border-radius: 10px ;
+    background-color: #f8f690 ;
+}
+
+/* MAIN Styles */
 .header {
     font-family: 'Syne Mono', monospace;
     border-bottom: 2px black;
@@ -74,7 +85,7 @@ nav ul li:hover {
 
 .main-background {
     background: linear-gradient(90deg, #ffffff 10%, #28c1f0 25%, #73f752 40%, #d6c845 55%, #f884f8 75%, #bd3131 85%, #2e1212 100%);
-    height: 100vh;
+    min-height: 100vw;
 }
 
 .header__content {
@@ -94,6 +105,14 @@ nav ul li:hover {
     font-size: 2em;
 }
 
+
+.table-blur {
+    background-color: #ffffff66;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+}
+
+/* FORMS Styles */
 .form__container {
     font-family: 'Prompt', sans-serif;
 }
@@ -102,12 +121,6 @@ nav ul li:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.table-blur {
-    background-color: #ffffff66;
-    backdrop-filter: blur(20px);
-    border-radius: 10px;
 }
 
 .form_input {
@@ -124,7 +137,8 @@ nav ul li:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 1rem 2rem;
+    align-items: center;
+    margin: 1rem 2rem !important;
 }
 
 .form--style tr {
@@ -139,6 +153,8 @@ nav ul li:hover {
     margin: 0 auto;
 }
 
+
+/* FOOTER Styles */
 .footer {
     background: linear-gradient(90deg, #ffffff 10%, #28c1f0 25%, #73f752 40%, #d6c845 55%, #f884f8 75%, #bd3131 85%, #2e1212 100%);
     font-family: 'Prompt', sans-serif;

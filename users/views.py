@@ -33,7 +33,7 @@ def register(request):
         if register_form.is_valid():
             username = register_form.cleaned_data['username']
             register_form.save()
-            return render(request, 'home.html', { 'message': 'User registration successful.'})
+            return render(request, 'home.html', { 'message': f'User {username} registration successful.'})
         
     else: 
         register_form = UserRegisterForm()

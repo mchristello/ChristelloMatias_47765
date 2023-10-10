@@ -37,3 +37,7 @@ def page_search(request):
         advice = f'No se enviaron datos!'
         
     return HttpResponse(advice)
+
+def about_me(request):
+    
+    return render(request, 'about_me.html')

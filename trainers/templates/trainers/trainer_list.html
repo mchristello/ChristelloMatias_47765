@@ -38,7 +38,9 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a class="btn btn-info" href="{% url 'TrainerCreate' %}">Create a New Trainer</a>
+        {% if user.is_authenticated %}
+            <a class="btn btn-info" href="{% url 'TrainerCreate' %}">Create a New Trainer</a>
+        {% endif %}
     </div>
 </div>
 

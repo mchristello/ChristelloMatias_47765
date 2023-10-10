@@ -21,7 +21,7 @@ class PokemonCreate(LoginRequiredMixin, CreateView): # Usan el mismo HTML pokemo
     success_url = '/pokemons/pokemonList'
     
     def form_valid(self, form):
-        form.instance.owner = self.request.user  # Asigna el usuario actual como propietario
+        form.instance.created_by = self.request.user  # Asigna el usuario actual como propietario
         return super().form_valid(form)
     
 # Update
