@@ -12,12 +12,10 @@ def login_view(request):
         login_form = AuthenticationForm(request, data=request.POST) # Recibe la info del formulario
         if login_form.is_valid():
             login_info = login_form.cleaned_data
-            print(login_info)
             username = login_info.get('username')
             password = login_info.get('password')            
             
             user = authenticate(username=username, password=password) # validación del login
-            print({user})
             if user:
                 login(request, user) # Se inicia sesión si las credentials son correctas
                 return render(request, 'home.html', { 'user': user })
@@ -71,20 +69,24 @@ def editProfile(request):
 
 @login_required
 def addAvatar(request):
+    user = request.user
     if request.method == 'POST':
-        avatar_form = AvatarFormulario(request.POST, request.FILES)
+        avatar_form = AvatarFormulario(request.POST, request.FILES, instance=user.avatar)
         
         if avatar_form.is_valid():
             
-            user = request.user
-            imagen = avatar_form.cleaned_data['imagen']
-            avatar = Avatar(user=user, imagen=imagen)
+            avatar = avatar_form.save(commit=False)
+            avatar.user = user
             avatar.save()
             
             return render(request, "home.html")  
         
     else:
         user = request.user
-        avatar_form = AvatarFormulario()
+        avatar_form = AvatarFormulario(instance=user.avatar)
     
     return render(request, "users/add_avatar.html", {"avatar_form": avatar_form, 'User': user})
+
+
+def deleteUser(request):
+    pass

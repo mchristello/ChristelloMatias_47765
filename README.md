@@ -5,17 +5,18 @@
 
 "_**PROYECTO POKEMON**_" es una aplicación desarrollada con Django que permite gestionar información relacionada con el mundo Pokémon. La aplicación ofrece las siguientes funcionalidades:
 
+    * Gestión de Usuario: Cada usuario puede crear una cuenta, loguearse y editar tanto su información de perfil, como su avatar.
+
     * Gestionar Pokemones: Los usuarios pueden agregar Pokemones a la base de datos utilizando un formulario que recopila información como el nombre, el tipo y el ataque del Pokémon, defensa y health, y una imagen. Automáticamente se genera la fecha y hora en que fue creado.
 
     * Gestión de Entrenadores Pokémon: Los usuarios pueden crear perfiles de Entrenadores Pokémon, proporcionando detalles como el nombre, el apellido y su tipo de Pokémon favorito, además de seleccionar todos los pokemones que son parte de su colección.
 
     * Gestión de Gimnasios Pokémon: La aplicación permite crear gimnasios Pokémon, con información como el nombre, el tipo y el líder del gimnasio, mostrando los entrenadores disponibles que han sido creados con anterioridad.
 
-    * Búsqueda de Pokémon: Los usuarios pueden buscar Pokémon por nombre y ver sus detalles.
+    * Búsqueda de Pokémon | Entrenador | Gimnasio: Los usuarios pueden buscar cualquiera de esos 3 modelos, por nombre.
 
     * Listado de Clases: La aplicación muestra un listado completo de todos los elementos en las tres clases: Pokémon, Entrenadores Pokémon y Gimnasios Pokémon.
 
-    * Gestión de Usuario: Cada usuario puede crear una cuenta, loguearse y editar tanto su información de perfil, como su avatar.
 
 ## __Servidor__
 
@@ -35,6 +36,7 @@ La aplicación sigue la arquitectura MVT (Model-View-Template) de Django y se ej
     - Endpoints:
         - Gestión de Pokemones: 
             - /pokemons/pokemonList - Listado de todos los Pokemons.
+
             - /pokemons/pokemonCreate - Formulario para crean nuevo pokemon.
             - /pokemons/pokemonDetail/<id> - Detalle del Pokemon solicitado mediante ID.
             - /pokemons/pokemonUpdate/<id> - Formulario para actualizar los datos de un Pokemon.

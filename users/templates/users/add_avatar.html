@@ -13,7 +13,7 @@
     <form action="" method="POST" enctype="multipart/form-data" class="table-blur p-5 form--style">
         {% csrf_token %}
     
-            {{ avatar_form.as_p }}
+            {{ avatar_form.as_table }}
             <button class="btn btn-warning w-100" type="submit">Change</button>
     </form>
 </section>
