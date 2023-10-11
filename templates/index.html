@@ -42,10 +42,10 @@
                             </ul>
                         </li>
                         {% if request.user.is_authenticated %}
-                            {% if request.user.avatar_set.exists %}
+                            {% if request.user.avatar %}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img  src="{{ request.user.avatar.imagen.url }}" alt="Avatar de {{ request.user.username }}" class="rounded-circle" width="50">
+                                        <img  src="{{ request.user.avatar.imagen.url }}" alt="Avatar de {{ request.user.first_name}}" class="rounded-circle" width="50">
                                         {{ user.first_name }} Menu
                                     </a>
                                     <ul class="dropdown-menu">
@@ -58,7 +58,6 @@
                             {% else %}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img  src="{{ request.user.avatar.imagen.url }}" alt="Avatar de {{ request.user.username }}" class="rounded-circle" width="50">
                                         {{ user.first_name }} Menu
                                     </a>
                                     <ul class="dropdown-menu">
@@ -77,6 +76,9 @@
                                 <a class="nav-link" href="{% url 'Register' %}">Register</a>
                             </li>
                         {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'AboutMe' %}">About Me</a>
+                        </li>
                     </ul>
                     <form class="d-flex me-5" role="search" action="{% url 'SearchResult' %}" method="GET">
                         <input class="form-control me-2" type="search" placeholder="Search For..." aria-label="Search" name="query" id="query">

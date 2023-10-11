@@ -10,6 +10,10 @@
 
 {% block contenidoQueCambia %}
 <section class="addItem--form m-5 form__container">
+
+    {% if message %}
+        <p class="title--welcome m-5">{{ message }}</p>
+    {% endif %}
     
     <form action="" method="POST" class="table-blur p-5 form--style">
         <h2 class="title--welcome text-center mb-5">Login</h2>

@@ -17,6 +17,7 @@
     
             {{ user_form.as_p }}
             <button class="btn btn-info w-100 mt-5" type="submit">Update Info</button>
+            <a class="btn btn-danger w-100 mt-2" href="{% url 'UserDelete' user.id %}">Delete Account</a>
     </form>
 
 </section>

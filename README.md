@@ -69,5 +69,5 @@ La aplicación sigue la arquitectura MVT (Model-View-Template) de Django y se ej
         - About Me:
             - /aboutMe - Pequeña página con información acerca de mí, y links de interés.
 
-## __Imagenes__
-This site was built using [GitHub Pages](https://pages.github.com/).
+## __Video__
+Video mostrando funcionalidades de la PokeApp -> [Drive](https://drive.google.com/file/d/1OvD_4lEOU9E4939zcJ6gAEei5PfxyqF9/view?usp=sharing).

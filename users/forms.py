@@ -19,8 +19,6 @@ class UserRegisterForm(UserCreationForm):
         
 class UserEditForm(UserCreationForm):
     email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'class': 'form_input m-2 disable'}))
-    country = forms.CharField(max_length=30, label='Country', widget=forms.TextInput(attrs={'class': 'form_input m-2'}))  
-
     first_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form_input m-2'}))
     last_name = forms.CharField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form_input m-2'}))
     password1 = forms.CharField(label='Password to Confirm', widget=forms.PasswordInput(attrs={'class': 'form_input m-2'}))
@@ -28,7 +26,18 @@ class UserEditForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'last_name', 'country', 'password1', 'password2']
+        fields = ['email', 'first_name', 'last_name', 'password1', 'password2']
+    
+    def __init__(self, *args, **kwargs):
+        super(UserEditForm, self).__init__(*args, **kwargs)
+        
+        user = kwargs.get('instance')
+        if user:
+            # Si hay un usuario autenticado, establece el valor inicial del campo 'email'
+            self.fields['email'].initial = user.email
+            
+        # Deshabilita el campo 'email' para que no sea editable
+        self.fields['email'].widget.attrs['readonly'] = True
 
 class AvatarFormulario(forms.ModelForm):
     class Meta:
@@ -37,5 +46,8 @@ class AvatarFormulario(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(AvatarFormulario, self).__init__(*args, **kwargs)
-        self.fields['user'].widget = forms.HiddenInput()
+        self.fields['user'].initial = self.instance.user
         self.fields['user'].disabled = True
+        
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form_input m-5'
